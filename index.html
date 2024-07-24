@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="welcome">
+        <h1 class="title">¡Feliz Cumpleaños!</h1>
+        <img src="bienvenida.jpg" alt="Bienvenida" class="welcome-image">
+        <button class="start-button" onclick="startAdventure()">Comenzar la Aventura</button>
+        <audio id="birthday-song" src="audio/tu-cancion.mp3" preload="auto"></audio>
+    </div>
+    <div class="treasure-hunt" id="treasure-hunt">
+        <h2 class="special-message-title">Un mensaje especial para ti</h2>
+        <div class="photo-gallery">
+            <img src="foto1.jpg" alt="Foto 1">
+            <p>Siempre admiraré tu dedicación y esfuerzo. ¡Eres increíble en todo lo que haces!</p>
+            <img src="foto2.jpg" alt="Foto 2">
+            <p>Eres mi persona favorita en cualquier disfraz, te amo por ser tú misma.</p>
+            <img src="foto3.jpg" alt="Foto 3">
+            <p>Tu alegría y colorido llenan mi vida de felicidad. ¡Que este año sea tan brillante como tu sonrisa!</p>
+            <img src="images/foto4.jpg" alt="Foto 4">
+            <p>La felicidad es más dulce cuando se comparte con los seres que amamos.</p>
+            <img src="images/foto5.jpg" alt="Foto 5">
+            <p>¡Contigo, el mundo es un lugar más hermoso!</p>
+        </div>
+        <div class="surprise-messages">
+            <div onclick="revealMessage('message1')">🎁</div>
+            <div onclick="revealMessage('message2')">🎁</div>
+            <div onclick="revealMessage('message3')">🎁</div>
+            <p id="message1" class="hidden">Amber querida, quiero desearte un feliz cumpleaños. ¡23 años ya! Joder, ¿cómo pasa el tiempo, no? Parece que fue ayer cuando nos conocimos, y ahora aquí estamos, celebrando otro año más de tu vida. No hay día en que no piense en la increíble persona en la que te estás convirtiendo. Tu trabajo y tu determinación me inspiran constantemente, y admiro profundamente la fuerza con la que enfrentas cada desafío.
+
+Quise darte este regalo para que siempre tengas presente el cariño y el apoyo que te doy en cada parte de tu vida y en todos tus proyectos. Eres una amiga increíble, y quiero que sepas que estoy aquí para ti en todo momento, en las buenas y en las malas. Cada logro tuyo me llena de orgullo, y cada dificultad que enfrentas me hace querer estar a tu lado para apoyarte aún más.</p>
+            <p id="message2" class="hidden">Espero que este día esté lleno de amor, alegría y momentos inolvidables. Que este regalo te recuerde lo especial que eres para mí y el profundo cariño que te tengo. Quiero que cada vez que lo veas, pienses en todas las aventuras que hemos vivido juntas y en todas las que aún nos esperan. Haz click en el último regalo para descubrir algo que espero te haga sonreír y te demuestre cuánto te valoro. ¡Feliz cumpleaños, Amber! Te quiero muchísimo y siempre estaré aquí para ti.</p>
+            <div id="message3" class="hidden">Toma un ramo de Gallo!!!.</p>
+                <img src="images/sorpresa.jpg" alt="Sorpresa" class="surprise-image">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function startAdventure() {
+            document.querySelector('.welcome').style.display = 'none';
+            document.getElementById('treasure-hunt').style.display = 'block';
+
+            // Reproducir el audio con volumen inicial bajo
+            const audio = document.getElementById('birthday-song');
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const track = audioContext.createMediaElementSource(audio);
+            const gainNode = audioContext.createGain();
+            
+            track.connect(gainNode).connect(audioContext.destination);
+            gainNode.gain.value = 0; // Volumen inicial bajo
+
+            audio.play();
+
+            // Aumentar el volumen gradualmente
+            const increaseVolume = () => {
+                const currentTime = audioContext.currentTime;
+                gainNode.gain.linearRampToValueAtTime(1, currentTime + 5); // Aumentar el volumen a 1 en 5 segundos
+            };
+
+            increaseVolume();
+        }
+
+        function revealMessage(id) {
+            const message = document.getElementById(id);
+            message.classList.toggle('hidden');
+            message.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

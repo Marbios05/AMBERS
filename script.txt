@@ -1,0 +1,8 @@
+function startAdventure() {
+    document.querySelector('.welcome').style.display = 'none';
+    document.getElementById('treasure-hunt').style.display = 'block';
+}
+
+function revealMessage(id) {
+    document.getElementById(id).classList.remove('hidden');
+}

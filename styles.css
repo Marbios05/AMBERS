@@ -1,0 +1,261 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f8ff;
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Mantener oculto el overflow en el body */
+    position: relative;
+
+}
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 10vw; /* Ajusta el ancho de las franjas según sea necesario */
+    height: 100%;
+    background-color: #000;
+}
+
+body::before {
+    left: 0;
+}
+
+body::after {
+    right: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+.welcome {
+    position: relative;
+    width: 85%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 3em;
+    color: #000; /* Cambiado a color negro */
+    animation: float 3s ease-in-out infinite;
+    border: 2px solid #000;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 15%; /* Ajustado para centrar verticalmente */
+    left: 28%;
+    transform: translate(-50%, -50%);
+}
+
+
+.welcome-image {
+    width: 80%;
+    max-width: 1000px;
+    height: auto;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in;
+}
+
+.start-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #ff69b4;
+    color: white;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    position: absolute;
+    top: 40%; /* Ajustado para centrar verticalmente */
+    left: 39%;
+    transform: translate(-50%, -50%);
+}
+.special-message-title {
+    font-size: 2.5em; /* Tamaño de fuente grande */
+    color: #ff69b4; /* Color rosa para combinar con el tema */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    text-shadow: 1px 1px 2px #333; /* Sombra para darle un efecto destacado */
+    font-weight: bold; /* Negrita para mayor énfasis */
+}
+
+.treasure-hunt {
+    display: none;
+    height: 100vh; /* Ocupa toda la altura de la ventana visible */
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    padding: 120px; /* Añadir padding para que el contenido no esté pegado a los bordes */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+    animation: fadeIn 2s ease-in;
+
+
+}
+.treasure-hunt::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en WebKit/Blink browsers */
+}
+.photo-gallery img {
+    width: 300px;
+    height: auto;
+    margin: 20px;
+    border: 5px solid #ff69b4;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+}
+.photo-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+.photo-gallery img {
+    border: 3px solid #ff1493; /* Rosa oscuro */
+    border-radius: 15px; /* Esquinas redondeadas */
+}
+
+.photo-gallery p {
+    font-size: 1.2em;
+    color: #333;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    animation-delay: 1s;
+}
+.photo-gallery img:nth-child(1) {
+    animation-delay: 1s;
+}
+
+.photo-gallery img:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.photo-gallery img:nth-child(3) {
+    animation-delay: 3s;
+}
+.photo-gallery img:nth-child(4) {
+    animation-delay: 4s;
+}
+
+.photo-gallery img:nth-child(5) {
+    animation-delay: 5s;
+}
+
+.surprise-messages div {
+    font-size: 2em;
+    cursor: pointer;
+    transition: transform o.5s;
+}
+
+.surprise-messages div:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.revealed {
+    display: block;
+    animation: fadeIn 3s ease-in;
+}
+
+
+}
+/* Franjas Negras */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 5vw; /* Ancho de las franjas negras */
+    height: 100%;
+    background-color: black; /* Color negro */
+    z-index: -1; /* Asegura que las franjas estén detrás del contenido principal */
+}
+
+body::before {
+    left: 0; /* Colocar la franja negra en el borde izquierdo */
+}
+
+body::after {
+    right: 0; /* Colocar la franja negra en el borde derecho */
+}
+
+/* Franjas Rosas Oscuras */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 5vw; /* Ancho de las franjas rosas */
+    height: 100%;
+    background-color: #ff1493; /* Color rosa oscuro */
+    z-index: -2; /* Asegura que las franjas estén detrás de las franjas negras */
+}
+
+body::before {
+    left: 5vw; /* Colocar la franja rosa después de la franja negra en el borde izquierdo */
+}
+
+body::after {
+    right: 5vw; /* Colocar la franja rosa después de la franja negra en el borde derecho */
+}
+body {
+    font-family: Arial, sans-serif;
+    background: url('images/birthday_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.surprise-image {
+    width: 35%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+audio {
+    display: none;
+}
+
+
